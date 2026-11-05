@@ -23,9 +23,9 @@ const jsonLd = {
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-<div class="hero" data-parallax-root>
+<div class={site.heroImage ? "hero has-photo" : "hero"} data-parallax-root>
   <div class="hero-bg" aria-hidden="true">
-    <span class="p-sun" data-speed="0.45"></span>
+    {site.heroImage && <img class="p-photo" data-speed="0.35" src={site.heroImage} alt="" fetchpriority="high" />}
     <svg class="p-sea" data-speed="0.2" viewBox="0 0 1200 160" preserveAspectRatio="none">
       <path d="M0 40 Q 150 10 300 40 T 600 40 T 900 40 T 1200 40" />
       <path d="M0 80 Q 150 50 300 80 T 600 80 T 900 80 T 1200 80" />

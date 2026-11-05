@@ -9,6 +9,8 @@ export const site = {
   phone: '+385976070998',
   phoneDisplay: '+385 97 607 0998',
   year: 2026,
+  // Fotografija u parallax zaglavlju (datoteka u public/), npr. '/hero/zadar.webp'. Prazno = bez fotografije.
+  heroImage: '',
   // Kad registriraš obrt, upiši podatke ovdje i pojavit će se u podnožju:
   owner: '', // npr. 'Stipe Prezime'
   address: '', // npr. 'Ulica 1, 23000 Zadar'
