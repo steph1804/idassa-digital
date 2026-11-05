@@ -219,6 +219,23 @@ footer.site .legal{display:flex;flex-direction:column;gap:2px}
 footer.site .links{display:flex;gap:18px;flex-wrap:wrap;align-items:start}
 @media (max-width:640px){footer.site{grid-template-columns:1fr}}
 
+/* portfolio */
+.works{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.work{display:flex;flex-direction:column;gap:18px;min-width:0}
+.work-shot{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .2s, box-shadow .2s}
+.work-shot:hover{transform:translateY(-3px);box-shadow:0 24px 48px -30px rgba(15,31,51,.45)}
+.work-hero{background:var(--w-accent);color:#fff;padding:36px 24px 40px;display:flex;flex-direction:column;gap:10px;min-height:180px;justify-content:flex-end}
+.work-type{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.work-headline{font-family:var(--display);font-weight:600;font-size:clamp(24px,3vw,32px);line-height:1.1;letter-spacing:-0.02em;text-wrap:balance}
+.work-body{display:flex;flex-direction:column;gap:10px}
+.work-body h3{font-size:24px}
+.work-body p{color:var(--muted)}
+.work-body ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.work-body li{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted)}
+.work-link{font-weight:600;color:var(--sea);text-decoration:none;align-self:flex-start}
+.work-link:hover{text-decoration:underline}
+@media (max-width:820px){.works{grid-template-columns:1fr}}
+
 /* text pages */
 .doc{max-width:720px;padding-block:24px 72px}
 .doc h1{font-size:clamp(34px,5vw,48px);margin-bottom:8px}

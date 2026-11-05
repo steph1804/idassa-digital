@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site';
+import { portfolio } from '../data/portfolio';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -71,6 +72,35 @@ const jsonLd = {
       <p>Brinemo da stranica radi, da je sigurna i da vas klijenti pronađu na Googleu i Google Mapsu.</p>
       <ul><li>Hosting</li><li>SEO</li><li>Google profil</li></ul>
     </article>
+  </div>
+</section>
+
+<section id="radovi" aria-labelledby="radovi-naslov">
+  <div class="sec-head">
+    <h2 id="radovi-naslov">Naši radovi</h2>
+    <p>Stranice koje smo napravili i koje rade svaki dan.</p>
+  </div>
+  <div class="works">
+    {portfolio.map((w) => (
+      <article class="work">
+        <a class="work-shot" href={w.url} target="_blank" rel="noopener" aria-label={`Otvori ${w.domain}`} style={`--w-accent:${w.accent}`}>
+          <div class="bar">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <div class="url">https://<b>{w.domain}</b></div>
+          </div>
+          <div class="work-hero">
+            <span class="work-type">{w.type}</span>
+            <span class="work-headline">{w.headline}</span>
+          </div>
+        </a>
+        <div class="work-body">
+          <h3>{w.name}</h3>
+          <p>{w.description}</p>
+          <ul>{w.tags.map((t) => <li>{t}</li>)}</ul>
+          <a class="work-link" href={w.url} target="_blank" rel="noopener">{w.domain} ↗</a>
+        </div>
+      </article>
+    ))}
   </div>
 </section>
 
