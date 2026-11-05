@@ -123,9 +123,10 @@ nav a:hover{color:var(--ink)}
 .hero-bg{position:absolute;inset:-40px 0 0 0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:0 0 24px 24px}
 .p-sea{position:absolute;left:0;right:0;bottom:-40px;width:100%;height:100px;will-change:transform}
 .p-sea path{fill:none;stroke:var(--sea);stroke-width:2;opacity:.25;vector-effect:non-scaling-stroke}
-.p-photo{position:absolute;inset:-12% 0 auto 0;width:100%;height:124%;object-fit:cover;will-change:transform}
+.p-photo{position:absolute;inset:-12% 0 auto 0;width:100%;height:124%;object-fit:cover;object-position:50% 72%;will-change:transform}
 .has-photo .hero-bg{top:0;bottom:0;left:50%;right:auto;width:100vw;margin-left:-50vw;border-radius:0}
 .has-photo .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 85%, transparent) 45%, color-mix(in srgb, var(--bg) 25%, transparent) 100%)}
+.has-photo .btn.ghost{background:color-mix(in srgb, var(--bg) 75%, transparent);backdrop-filter:blur(6px)}
 @media (max-width:860px){.has-photo .hero-bg::after{background:color-mix(in srgb, var(--bg) 82%, transparent)}}
 .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sea)}
 .hero h1{font-size:clamp(44px, 7vw, 80px);margin-top:14px}
