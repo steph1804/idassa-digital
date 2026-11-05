@@ -5,7 +5,7 @@ export const site = {
   name: 'idassa.digital',
   tradeName: 'idassa digital',
   city: 'Zadar',
-  email: 'pozdrav@idassa.digital',
+  email: 'hello@idassa.digital',
   phone: '+385976070998',
   phoneDisplay: '+385 97 607 0998',
   year: 2026,
