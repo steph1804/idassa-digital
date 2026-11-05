@@ -4,7 +4,7 @@
 // Za otključavanje stranice obriši tu varijablu i u njezino mjesto dodaj SITE_PUBLIC = "true".
 
 const REALM = 'idassa.digital';
-const DEFAULT_PASSWORD_SHA256 = '3bf0c040cd30426cb89c55bb48acc35a9a7d8a73b0b2413cb9a35b565f1daa95';
+const DEFAULT_PASSWORD_SHA256 = '729d868e3527e325418372aa1ccf25065973902dd6f3e782d6d54106454ad9ee';
 
 async function sha256Hex(text) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
