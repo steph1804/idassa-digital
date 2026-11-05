@@ -233,6 +233,7 @@ footer.site .links{display:flex;gap:18px;flex-wrap:wrap;align-items:start}
 .work-shot{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .2s, box-shadow .2s}
 .work-shot:hover{transform:translateY(-3px);box-shadow:0 24px 48px -30px rgba(15,31,51,.45)}
 .work-hero{background:var(--w-accent);color:#fff;padding:36px 24px 40px;display:flex;flex-direction:column;gap:10px;min-height:180px;justify-content:flex-end}
+.work-img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
 .work-type{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
 .work-headline{font-family:var(--display);font-weight:600;font-size:clamp(24px,3vw,32px);line-height:1.1;letter-spacing:-0.02em;text-wrap:balance}
 .work-body{display:flex;flex-direction:column;gap:10px}

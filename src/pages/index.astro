@@ -96,10 +96,14 @@ const jsonLd = {
             <div class="dots"><i></i><i></i><i></i></div>
             <div class="url">https://<b>{w.domain}</b></div>
           </div>
-          <div class="work-hero">
-            <span class="work-type">{w.type}</span>
-            <span class="work-headline">{w.headline}</span>
-          </div>
+          {w.image ? (
+            <img class="work-img" src={w.image} alt={`Naslovnica stranice ${w.domain}`} loading="lazy" width="1280" height="800" />
+          ) : (
+            <div class="work-hero">
+              <span class="work-type">{w.type}</span>
+              <span class="work-headline">{w.headline}</span>
+            </div>
+          )}
         </a>
         <div class="work-body">
           <h3>{w.name}</h3>
