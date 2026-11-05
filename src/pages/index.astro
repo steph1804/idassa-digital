@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: site.name,
+  description: 'Izrada web stranica za odvjetničke urede, obrte i male tvrtke.',
+  url: 'https://idassa.digital/',
+  email: site.email,
+  telephone: site.phone,
+  areaServed: 'HR',
+  address: { '@type': 'PostalAddress', postalCode: '23000', addressLocality: 'Zadar', addressCountry: 'HR' },
+  priceRange: '€€',
+};
+---
+<Base
+  home
+  title="idassa.digital | Izrada web stranica u Zadru"
+  description="Izrada brzih i preglednih web stranica za odvjetničke urede, obrte i male tvrtke. Web studio iz Zadra, jasne cijene, gotovo za dva tjedna."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<div class="hero">
+  <div>
+    <p class="eyebrow">Web studio · Zadar</p>
+    <h1>Vaš posao, <em>dostojno</em> predstavljen na webu.</h1>
+    <p class="lead">Izrađujemo pouzdane i pregledne web stranice za odvjetničke urede, obrte i male tvrtke. Jasno, brzo i bez skrivenih troškova.</p>
+    <div class="cta-row">
+      <a class="btn sun" href="#kontakt">Zatraži ponudu</a>
+      <a class="btn ghost" href="#paketi">Pogledaj pakete</a>
+    </div>
+  </div>
+
+  <div class="browser" role="img" aria-label="Primjer web stranice odvjetničkog ureda">
+    <div class="bar">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <div class="url">https://<b>ured-forum.hr</b></div>
+    </div>
+    <div class="demo" aria-hidden="true">
+      <span class="tag">Primjer</span>
+      <h2>Odvjetnički ured Forum</h2>
+      <p>Obiteljsko, nasljedno i trgovačko pravo. Dogovorite konzultacije online.</p>
+      <div class="blocks"><div>Područja rada</div><div>Tim</div><div>Kontakt</div></div>
+      <div class="score"><span>Brzina <b>98</b>/100</span><span>Mobitel <b>✓</b></span><span>Google <b>✓</b></span></div>
+    </div>
+  </div>
+</div>
+
+<section aria-labelledby="ime">
+  <div class="story">
+    <h2 class="name" id="ime"><span>idassa</span><span class="sun"></span><span class="w2">digital</span></h2>
+    <p>Idassa je najstarije zapisano ime Zadra. <span>Grad koji tri tisuće godina dočekuje ljude s mora danas vas dočekuje na webu. Od tog imena krenuli smo i mi.</span></p>
+  </div>
+</section>
+
+<section id="usluge" aria-labelledby="usluge-naslov">
+  <div class="sec-head">
+    <h2 id="usluge-naslov">Što radimo</h2>
+    <p>Od prvog razgovora do stranice koja radi za vas. Vi se bavite svojim poslom, a web prepustite nama.</p>
+  </div>
+  <div class="services">
+    <article>
+      <h3>Web stranice</h3>
+      <p>Pregledna stranica koja ulijeva povjerenje, dobro izgleda na mobitelu i učitava se u sekundi.</p>
+      <ul><li>Dizajn</li><li>Izrada</li><li>Tekstovi</li></ul>
+    </article>
+    <article>
+      <h3>Web trgovine</h3>
+      <p>Prodajte online uz kartično plaćanje, dostavu i jednostavno upravljanje proizvodima.</p>
+      <ul><li>Plaćanje karticom</li><li>Dostava</li><li>Zalihe</li></ul>
+    </article>
+    <article>
+      <h3>Održavanje i Google</h3>
+      <p>Brinemo da stranica radi, da je sigurna i da vas klijenti pronađu na Googleu i Google Mapsu.</p>
+      <ul><li>Hosting</li><li>SEO</li><li>Google profil</li></ul>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="proces">
+  <div class="sec-head">
+    <h2 id="proces">Kako to ide</h2>
+    <p>Jednostavna stranica može biti gotova za dva tjedna.</p>
+  </div>
+  <ol class="steps">
+    <li class="step"><div class="day">1. dan</div><h3>Razgovor</h3><p>Upoznamo vaš posao, klijente i što vam stranica treba.</p></li>
+    <li class="step"><div class="day">3. dan</div><h3>Prijedlog dizajna</h3><p>Dobijete izgled stranice i kažete što mijenjati.</p></li>
+    <li class="step"><div class="day">5. do 12. dan</div><h3>Izrada</h3><p>Slažemo stranicu, tekstove i slike te sve testiramo na mobitelu.</p></li>
+    <li class="step"><div class="day">14. dan</div><h3>Objava</h3><p>Stranica je na vašoj domeni, a mi ostajemo uz vas.</p></li>
+  </ol>
+</section>
+
+<section id="paketi" aria-labelledby="paketi-naslov">
+  <div class="sec-head">
+    <h2 id="paketi-naslov">Paketi</h2>
+    <p>Jasne cijene unaprijed. Ako vam treba nešto između, složimo ponudu po mjeri.</p>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <h3>Start</h3>
+      <div class="price">390 €<small> jednokratno</small></div>
+      <ul>
+        <li>Stranica na jednoj stranici</li>
+        <li>Kontakt, karta i radno vrijeme</li>
+        <li>Prilagođeno mobitelu</li>
+        <li>Pomoć oko domene</li>
+      </ul>
+      <a class="btn ghost" href="#kontakt">Odaberi Start</a>
+    </div>
+    <div class="plan featured">
+      <span class="badge">Najčešći izbor</span>
+      <h3>Ured</h3>
+      <div class="price">790 €<small> jednokratno</small></div>
+      <ul>
+        <li>Do 6 podstranica</li>
+        <li>Pisanje tekstova</li>
+        <li>Osnovni SEO i Google profil</li>
+        <li>Obrazac za upite</li>
+        <li>Hrvatski i engleski</li>
+      </ul>
+      <a class="btn sun" href="#kontakt">Odaberi Ured</a>
+    </div>
+    <div class="plan">
+      <h3>Trgovina</h3>
+      <div class="price">od 1.490 €</div>
+      <ul>
+        <li>Web trgovina s plaćanjem karticom</li>
+        <li>Do 50 proizvoda unosimo mi</li>
+        <li>Dostava i računi</li>
+        <li>Kratka obuka za vas</li>
+      </ul>
+      <a class="btn ghost" href="#kontakt">Zatraži ponudu</a>
+    </div>
+  </div>
+  <p class="fine">Održavanje i hosting od 25 € mjesečno.</p>
+</section>
+
+<section aria-labelledby="zasto">
+  <div class="sec-head"><h2 id="zasto">Zašto idassa.digital</h2></div>
+  <div class="why">
+    <div><span class="ic" aria-hidden="true">1s</span><div><h3>Brzo se učitava</h3><p>Spore stranice gube posjetitelje. Naše se učitavaju za manje od sekunde.</p></div></div>
+    <div><span class="ic" aria-hidden="true">hr</span><div><h3>Lokalno, iz Zadra</h3><p>Razgovaramo vašim jezikom, a ne žargonom. Možemo se naći i uživo.</p></div></div>
+    <div><span class="ic" aria-hidden="true">€</span><div><h3>Bez skrivenih troškova</h3><p>Cijenu znate prije početka. Domena i stranica su vaše.</p></div></div>
+    <div><span class="ic" aria-hidden="true">✓</span><div><h3>Dugoročno uz vas</h3><p>Nakon objave ostajemo dostupni za izmjene, pitanja i savjete.</p></div></div>
+  </div>
+</section>
+
+<section id="pitanja" aria-labelledby="pitanja-naslov">
+  <div class="sec-head"><h2 id="pitanja-naslov">Česta pitanja</h2></div>
+  <div class="faq">
+    <details>
+      <summary>Koliko traje izrada stranice?</summary>
+      <p>Jednostavna stranica gotova je za oko dva tjedna od prvog razgovora. Veće stranice i web trgovine traju tri do šest tjedana, ovisno o sadržaju.</p>
+    </details>
+    <details>
+      <summary>Trebam li sam pripremiti tekstove i slike?</summary>
+      <p>Ne morate. U paketu Ured pišemo tekstove umjesto vas, a možemo preporučiti i fotografa. Ako već imate materijale, rado ćemo ih iskoristiti.</p>
+    </details>
+    <details>
+      <summary>Čija je domena i stranica nakon izrade?</summary>
+      <p>Vaša. Domena se registrira na vaše ime, a stranicu možete preseliti kod bilo kojeg drugog pružatelja usluga.</p>
+    </details>
+    <details>
+      <summary>Mogu li sam mijenjati sadržaj?</summary>
+      <p>Da. Ako želite sami mijenjati tekstove, cijene ili novosti, postavit ćemo jednostavan sustav i pokazati vam kako ga koristiti. Ako ne želite, izmjene radimo mi.</p>
+    </details>
+    <details>
+      <summary>Radite li i za klijente izvan Zadra?</summary>
+      <p>Da. Sastanke možemo održati i online, a stranice radimo za klijente iz cijele Hrvatske.</p>
+    </details>
+  </div>
+</section>
+
+<div class="contact" id="kontakt">
+  <div>
+    <h2>Razgovarajmo o vašoj <em>stranici.</em></h2>
+    <p>Napišite nam ukratko čime se bavite i što vam treba. Javljamo se u roku od jednog radnog dana.</p>
+  </div>
+  <div class="channels">
+    <div class="channel"><span class="lbl">E-mail</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
+    <div class="channel"><span class="lbl">Telefon</span><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></div>
+  </div>
+</div>
+</Base>

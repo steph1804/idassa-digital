@@ -1,0 +1,7 @@
+---
+interface Props { size?: number }
+const { size } = Astro.props;
+---
+<span class="la" style={size ? `font-size:${size}px` : undefined}>
+  <span class="w1">idassa</span><span class="sun"></span><span class="w2">digital</span>
+</span>

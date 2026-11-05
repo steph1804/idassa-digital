@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  home?: boolean;
+}
+const { title, description, noindex = false, home = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/assets/og-image.png', Astro.site);
+---
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+  {noindex && <meta name="robots" content="noindex">}
+  <meta name="theme-color" content="#0F1F33">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="hr_HR">
+  <meta property="og:site_name" content={site.name}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+  <meta name="twitter:card" content="summary_large_image">
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip" href="#sadrzaj">Preskoči na sadržaj</a>
+  <div class="wrap">
+    <header class="site">
+      <a class="logo" href="/" aria-label={`${site.name}, početna`}><Logo /></a>
+      <nav aria-label="Glavna navigacija">
+        {home ? (
+          <>
+            <a class="hide-sm" href="#usluge">Usluge</a>
+            <a class="hide-sm" href="#paketi">Paketi</a>
+            <a class="hide-sm" href="#pitanja">Pitanja</a>
+            <a class="btn" href="#kontakt">Kontakt</a>
+          </>
+        ) : (
+          <a class="btn ghost" href="/">Natrag na početnu</a>
+        )}
+      </nav>
+    </header>
+
+    <main id="sadrzaj" class={home ? undefined : 'doc'}>
+      <slot />
+    </main>
+
+    <footer class="site">
+      <div class="legal">
+        <a class="logo" href="/" aria-label={site.name}><Logo /></a>
+        {site.owner
+          ? <span>{site.tradeName}, obrt za računalne usluge, vl. {site.owner}</span>
+          : <span>{site.tradeName} · {site.city}</span>}
+        {site.address && <span>{site.address}{site.oib && ` · OIB: ${site.oib}`}</span>}
+        <span>© {site.year} {site.name}</span>
+      </div>
+      <div class="links">
+        <a href="/politika-privatnosti/">Politika privatnosti</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
