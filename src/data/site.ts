@@ -1,5 +1,7 @@
 // Osnovni podaci o studiju. Promijeni ovdje i promjena vrijedi na cijeloj stranici.
 export const site = {
+  // false = stranica je skrivena od Googlea (noindex). Kad je spremna za javnost, stavi true.
+  isPublic: false,
   name: 'idassa.digital',
   tradeName: 'idassa digital',
   city: 'Zadar',
