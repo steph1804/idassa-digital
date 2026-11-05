@@ -85,7 +85,7 @@
   --sun:#F0B354; --on-sun:#0F1F33; --sea:#8DB6DD; --sea-soft:#183049; color-scheme:dark }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
   -webkit-font-smoothing:antialiased;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
@@ -124,7 +124,7 @@ nav a:hover{color:var(--ink)}
 .p-sea{position:absolute;left:0;right:0;bottom:-40px;width:100%;height:100px;will-change:transform}
 .p-sea path{fill:none;stroke:var(--sea);stroke-width:2;opacity:.25;vector-effect:non-scaling-stroke}
 .p-photo{position:absolute;inset:-12% 0 auto 0;width:100%;height:124%;object-fit:cover;will-change:transform}
-.has-photo .hero-bg{inset:-40px calc(-1 * max(16px, env(safe-area-inset-right, 0px))) 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px)));border-radius:0}
+.has-photo .hero-bg{top:0;bottom:0;left:50%;right:auto;width:100vw;margin-left:-50vw;border-radius:0}
 .has-photo .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 85%, transparent) 45%, color-mix(in srgb, var(--bg) 25%, transparent) 100%)}
 @media (max-width:860px){.has-photo .hero-bg::after{background:color-mix(in srgb, var(--bg) 82%, transparent)}}
 .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sea)}
