@@ -23,6 +23,6 @@ export const portfolio = [
       'Agregator lokalnih vijesti koji se osvježava svakih 15 minuta, s kategorijama, RSS-om, prognozom vremena, događanjima i korisnim linkovima za trajekte i promet.',
     tags: ['Automatsko osvježavanje', 'RSS', 'Vrijeme', 'Događanja'],
     accent: '#1968B3',
-    image: '',
+    image: '/portfolio/idassa-click.webp',
   },
 ];
