@@ -11,7 +11,7 @@ export const portfolio = [
       'Stranica za tri apartmana u prvom redu do mora. Galerija, karta, recenzije gostiju, obrazac za upit i WhatsApp/Viber kontakt, na 12 jezika.',
     tags: ['12 jezika', 'Upiti gostiju', 'Galerija', 'Blog'],
     accent: '#0E8C8C',
-    image: '',
+    image: '/portfolio/sole.webp',
   },
   {
     name: 'idassa.click',
