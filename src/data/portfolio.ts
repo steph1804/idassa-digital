@@ -25,4 +25,15 @@ export const portfolio = [
     accent: '#1968B3',
     image: '/portfolio/idassa-click.webp',
   },
+  {
+    name: 'domacin.digital',
+    url: 'https://domacin.digital',
+    domain: 'domacin.digital',
+    type: 'Web aplikacija · Privatni smještaj',
+    headline: 'Gost skenira QR kod i sve zna na svom jeziku',
+    description:
+      'Digitalni vodič za goste za male iznajmljivače: Wi-Fi, check-in i check-out, kućni red, upute za uređaje i preporuke u blizini, na 8 jezika. Domaćin ga uređuje s mobitela, a QR kartica se nikad ne mora ponovno tiskati.',
+    tags: ['8 jezika', 'QR kod', 'Pretplate', 'Sučelje za domaćina'],
+    accent: '#1A78B4',
+  },
 ];
