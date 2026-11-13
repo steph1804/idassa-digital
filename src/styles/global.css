@@ -66,12 +66,13 @@
   src: url(/fonts/outfit-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-/* idassa.digital — Koralj i tirkiz
-   Layout: calm left-aligned column, "browser window" hero; coral sun used only for the logo dot and key actions.
-   --sea-text is a darker shade of the teal for small text on light backgrounds (contrast 4.5:1). */
+/* idassa.digital — Ocean (Stipe, 2026-11-13)
+   ocean-deep #2364AA, fresh-sky #3DA5D9, tropical-teal #73BFB8, school-bus-yellow #FEC601, pumpkin-spice #EA7317.
+   Layout: calm left-aligned column, "browser window" hero; pumpkin used for the logo dot and key actions. */
 :root{
   --bg:#F1F2F1; --surface:#FFFFFF; --ink:#0F1F33; --muted:#566373; --line:#D9DDDF;
-  --sun:#FF736A; --sun-hover:#FF7B71; --on-sun:#0F1F33; --sea:#00A4B6; --sea-text:#007A87; --sea-bright:#00BFD5; --sea-soft:#DDF2F4;
+  --sun:#EA7317; --sun-hover:#FEC601; --on-sun:#0F1F33; --yellow:#FEC601; --teal:#73BFB8;
+  --sea:#2364AA; --sea-text:#2364AA; --sea-bright:#3DA5D9; --sea-soft:#E2F1EF;
   --display:"Outfit","Avenir Next",system-ui,sans-serif;
   --body:"Nunito Sans","Segoe UI",system-ui,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
@@ -80,10 +81,12 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0B1624; --surface:#122236; --ink:#ECEFF2; --muted:#9AA7B6; --line:#22344B;
-  --sun:#FF736A; --sun-hover:#FF7B71; --on-sun:#0F1F33; --sea:#00BFD5; --sea-text:#00BFD5; --sea-bright:#00BFD5; --sea-soft:#0E3238; color-scheme:dark }}
+  --sun:#EA7317; --sun-hover:#FEC601; --on-sun:#0F1F33; --yellow:#FEC601; --teal:#73BFB8;
+  --sea:#3DA5D9; --sea-text:#3DA5D9; --sea-bright:#73BFB8; --sea-soft:#163A44; color-scheme:dark }}
 :root[data-theme="dark"]{
   --bg:#0B1624; --surface:#122236; --ink:#ECEFF2; --muted:#9AA7B6; --line:#22344B;
-  --sun:#FF736A; --sun-hover:#FF7B71; --on-sun:#0F1F33; --sea:#00BFD5; --sea-text:#00BFD5; --sea-bright:#00BFD5; --sea-soft:#0E3238; color-scheme:dark }
+  --sun:#EA7317; --sun-hover:#FEC601; --on-sun:#0F1F33; --yellow:#FEC601; --teal:#73BFB8;
+  --sea:#3DA5D9; --sea-text:#3DA5D9; --sea-bright:#73BFB8; --sea-soft:#163A44; color-scheme:dark }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
@@ -124,7 +127,7 @@ nav a:hover{color:var(--ink)}
 .hero{position:relative;isolation:isolate}
 .hero-bg{position:absolute;inset:-40px 0 0 0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:0}
 .p-sea{position:absolute;left:0;right:0;bottom:-40px;width:100%;height:100px}
-.p-sea path{fill:none;stroke:var(--sea);stroke-width:2;opacity:.25;vector-effect:non-scaling-stroke}
+.p-sea path{fill:none;stroke:var(--teal);stroke-width:2;opacity:.25;vector-effect:non-scaling-stroke}
 .p-photo{position:absolute;inset:-12% 0 auto 0;width:100%;height:124%;object-fit:cover;object-position:50% 72%;will-change:transform}
 .has-photo .hero-bg{top:0;bottom:0;left:50%;right:auto;width:100vw;margin-left:-50vw;border-radius:0}
 .has-photo .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 85%, transparent) 45%, color-mix(in srgb, var(--bg) 25%, transparent) 100%)}
@@ -177,7 +180,7 @@ section{padding-block:64px;border-top:1px solid var(--line)}
 .step .day{font-family:var(--mono);font-size:13px;color:var(--sea-text)}
 .step h3{font-size:22px;margin-top:8px}
 .step p{color:var(--muted);font-size:15px;margin-top:6px}
-.step:last-child{border-top-color:var(--sun)}
+.step:last-child{border-top-color:var(--yellow)}
 @media (max-width:820px){.steps{grid-template-columns:1fr 1fr;row-gap:12px}.step + .step{padding-left:0}.step{padding-right:16px}}
 @media (max-width:480px){.steps{grid-template-columns:1fr}}
 
@@ -190,7 +193,7 @@ section{padding-block:64px;border-top:1px solid var(--line)}
 .price small{font-family:var(--body);font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0}
 .plan ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;flex:1}
 .plan li{padding-left:22px;position:relative;font-size:15px}
-.plan li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:0;background:var(--sun)}
+.plan li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:0;background:var(--yellow)}
 .plan .btn{align-self:flex-start}
 .fine{font-size:13px;color:var(--muted);margin-top:18px}
 @media (max-width:900px){.plans{grid-template-columns:1fr}}
