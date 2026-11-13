@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site';
 import { portfolio } from '../data/portfolio';
+const shots = portfolio.filter((w) => w.image);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -25,14 +26,14 @@ const jsonLd = {
 
 <div class={site.heroImage ? "hero has-photo" : "hero"} data-parallax-root>
   <div class="hero-bg" aria-hidden="true">
-    {site.heroImage && <img class="p-photo" data-speed="0.35" src={site.heroImage} srcset={`${site.heroImageSmall} 1000w, ${site.heroImage} 2000w`} sizes="100vw" alt="" fetchpriority="high" />}
-    <svg class="p-sea" data-speed="0.2" viewBox="0 0 1200 160" preserveAspectRatio="none">
+    {site.heroImage && <img class="p-photo" data-speed="0.3" src={site.heroImage} srcset={`${site.heroImageSmall} 1000w, ${site.heroImage} 2000w`} sizes="100vw" alt="" fetchpriority="high" />}
+    <svg class="p-sea" viewBox="0 0 1200 160" preserveAspectRatio="none">
       <path d="M0 40 Q 150 10 300 40 T 600 40 T 900 40 T 1200 40" />
       <path d="M0 80 Q 150 50 300 80 T 600 80 T 900 80 T 1200 80" />
       <path d="M0 120 Q 150 90 300 120 T 600 120 T 900 120 T 1200 120" />
     </svg>
   </div>
-  <div class="hero-text" data-speed="-0.12">
+  <div class="hero-text">
     <p class="eyebrow">Web studio · Zadar</p>
     <h1>Vaš posao, <em>dostojno</em> predstavljen na webu.</h1>
     <p class="lead">Izrađujemo pouzdane i pregledne web stranice za odvjetničke urede, obrte i male tvrtke. Jasno, brzo i bez skrivenih troškova.</p>
@@ -42,19 +43,18 @@ const jsonLd = {
     </div>
   </div>
 
-  <div class="browser" data-speed="0.18" role="img" aria-label="Primjer web stranice odvjetničkog ureda">
+  <a class="browser showcase" href="#radovi" aria-label="Pogledaj naše radove">
     <div class="bar">
       <div class="dots"><i></i><i></i><i></i></div>
-      <div class="url">https://<b>ured-forum.hr</b></div>
+      <div class="url">https://<b data-show-url>{shots[0].domain}</b></div>
     </div>
-    <div class="demo" aria-hidden="true">
-      <span class="tag">Primjer</span>
-      <h2>Odvjetnički ured Forum</h2>
-      <p>Obiteljsko, nasljedno i trgovačko pravo. Dogovorite konzultacije online.</p>
-      <div class="blocks"><div>Područja rada</div><div>Tim</div><div>Kontakt</div></div>
-      <div class="score"><span>Brzina <b>98</b>/100</span><span>Mobitel <b>✓</b></span><span>Google <b>✓</b></span></div>
+    <div class="shots">
+      {shots.map((w, i) => (
+        <img src={w.image} alt={`Stranica ${w.name}`} width="1280" height="800" data-domain={w.domain} class={i === 0 ? 'on' : ''} loading={i === 0 ? 'eager' : 'lazy'} />
+      ))}
     </div>
-  </div>
+    <span class="show-tag">Naš rad</span>
+  </a>
 </div>
 
 <section aria-labelledby="ime">
@@ -230,6 +230,20 @@ const jsonLd = {
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     }, { passive: true });
     update();
+  }
+
+  const show = document.querySelector('.showcase');
+  if (show && !reduce.matches) {
+    const imgs = Array.from(show.querySelectorAll<HTMLImageElement>('.shots img'));
+    const url = show.querySelector('[data-show-url]');
+    let i = 0;
+    if (imgs.length > 1) setInterval(() => {
+      if (document.hidden) return;
+      imgs[i].classList.remove('on');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('on');
+      if (url) url.textContent = imgs[i].dataset.domain || '';
+    }, 4000);
   }
 </script>
 </Base>
