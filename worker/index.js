@@ -4,6 +4,15 @@
 // Za otključavanje stranice obriši tu varijablu i u njezino mjesto dodaj SITE_PUBLIC = "true".
 
 const REALM = 'idassa.digital';
+// Datoteke koje telefon treba za instalaciju stranice kao aplikacije (manifest i ikone).
+// Chrome i Googleov poslužitelj ih dohvaćaju bez lozinke, pa su izuzete od zaključavanja.
+const PUBLIC_PATHS = new Set([
+  '/manifest.webmanifest',
+  '/assets/icon-192.png',
+  '/assets/icon-512.png',
+  '/assets/apple-touch-icon.png',
+  '/favicon.svg',
+]);
 const DEFAULT_PASSWORD_SHA256 = '729d868e3527e325418372aa1ccf25065973902dd6f3e782d6d54106454ad9ee';
 
 async function sha256Hex(text) {
@@ -35,6 +44,8 @@ function safeEqual(a, b) {
 export default {
   async fetch(request, env) {
     if (env.SITE_PUBLIC === 'true') return env.ASSETS.fetch(request);
+
+    if (PUBLIC_PATHS.has(new URL(request.url).pathname)) return env.ASSETS.fetch(request);
 
     const password = env.SITE_PASSWORD;
 
