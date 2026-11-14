@@ -22,7 +22,8 @@ const ogImage = new URL('/assets/og-image.png', Astro.site);
   <meta name="description" content={description}>
   <link rel="canonical" href={canonical}>
   {(noindex || !site.isPublic) && <meta name="robots" content="noindex, nofollow">}
-  <meta name="theme-color" content="#0F1F33">
+  <meta name="color-scheme" content="only light">
+  <meta name="theme-color" content="#F1F2F1">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials">

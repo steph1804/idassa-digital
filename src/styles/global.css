@@ -75,14 +75,8 @@
   --body:"Nunito Sans","Segoe UI",system-ui,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   --r:0;
-  color-scheme:light;
+  color-scheme:only light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0B1624; --surface:#122236; --ink:#ECEFF2; --muted:#9AA7B6; --line:#22344B;
-  --sun:#F0B354; --on-sun:#0F1F33; --sea:#8DB6DD; --sea-soft:#183049; color-scheme:dark }}
-:root[data-theme="dark"]{
-  --bg:#0B1624; --surface:#122236; --ink:#ECEFF2; --muted:#9AA7B6; --line:#22344B;
-  --sun:#F0B354; --on-sun:#0F1F33; --sea:#8DB6DD; --sea-soft:#183049; color-scheme:dark }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
