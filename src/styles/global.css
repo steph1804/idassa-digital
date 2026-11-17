@@ -66,11 +66,11 @@
   src: url(/fonts/outfit-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-/* idassa.digital — Kamen i more
-   Layout: calm left-aligned column, "browser window" hero; gold sun used only for the logo dot and key actions. */
+/* idassa.digital — paleta prema mer.hr (crna, plava, zelena)
+   Layout: calm left-aligned column, "browser window" hero; green sun used only for the logo dot and key actions. */
 :root{
-  --bg:#F1F2F1; --surface:#FFFFFF; --ink:#0F1F33; --muted:#566373; --line:#D9DDDF;
-  --sun:#E7A33E; --on-sun:#0F1F33; --sea:#1D4E79; --sea-soft:#E1EAF2;
+  --bg:#F4F5F4; --surface:#FFFFFF; --ink:#111111; --muted:#5A5E63; --line:#DCDEDF;
+  --sun:#95C152; --on-sun:#111111; --sea:#1F76B5; --sea-soft:#E3F0F9;
   --display:"Outfit","Avenir Next",system-ui,sans-serif;
   --body:"Nunito Sans","Segoe UI",system-ui,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
