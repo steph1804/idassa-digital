@@ -43,6 +43,10 @@ function safeEqual(a, b) {
 
 export default {
   async fetch(request, env) {
+    // /sitemap.xml je uobičajena adresa; Astro generira /sitemap-index.xml.
+    if (new URL(request.url).pathname === '/sitemap.xml') {
+      return Response.redirect(new URL('/sitemap-index.xml', request.url).toString(), 301);
+    }
     if (env.SITE_PUBLIC === 'true') return env.ASSETS.fetch(request);
 
     if (PUBLIC_PATHS.has(new URL(request.url).pathname)) return env.ASSETS.fetch(request);
