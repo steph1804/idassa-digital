@@ -1,7 +1,7 @@
 // Zaključava cijelu stranicu lozinkom (HTTP Basic Auth).
 // Zadana lozinka: u kodu je samo njezin SHA-256 sažetak (DEFAULT_PASSWORD_SHA256), ne sama lozinka.
 // Lozinku možeš zamijeniti svojom u Cloudflareu: Settings → Variables and Secrets → SITE_PASSWORD (Secret).
-// Za otključavanje stranice obriši tu varijablu i u njezino mjesto dodaj SITE_PUBLIC = "true".
+// Stranica je otključana preko "vars": { "SITE_PUBLIC": "true" } u wrangler.jsonc. Za ponovno zaključavanje makni taj redak.
 
 const REALM = 'idassa.digital';
 // Datoteke koje telefon treba za instalaciju stranice kao aplikacije (manifest i ikone).
