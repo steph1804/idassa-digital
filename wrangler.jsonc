@@ -11,5 +11,6 @@
   },
   "observability": { "enabled": true },
   "vars": { "SITE_PUBLIC": "true" },
+  "send_email": [{ "name": "SEND_EMAIL" }],
   "previews": {}
 }

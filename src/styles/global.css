@@ -202,12 +202,31 @@ section{padding-block:64px;border-top:1px solid var(--line)}
 .faq details[open] summary::after{content:"−"}
 .faq details p{color:var(--muted);margin-top:10px;max-width:68ch}
 
-.contact{background:var(--ink);color:var(--bg);border-radius:0;padding:clamp(28px,6vw,64px);display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;margin-block:64px}
+.contact{background:var(--ink);color:var(--bg);border-radius:0;padding:clamp(28px,6vw,64px);display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,56px);align-items:start;margin-block:64px}
 .contact > *{min-width:0}
 .contact h2{font-size:clamp(36px,6vw,60px)}
 .contact h2 em{font-style:normal;color:var(--sun)}
 .contact p{opacity:.75;margin-top:14px;max-width:38ch}
-.channels{display:flex;flex-direction:column;gap:12px}
+.channels{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.cform{display:grid;gap:14px}
+.cform .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cform .row > *{min-width:0}
+.field{display:grid;gap:6px}
+.field label{font-size:14px;font-weight:600}
+.field label span{font-weight:400;opacity:.65}
+.cform input,.cform select,.cform textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid transparent;border-radius:0;padding:11px 12px;width:100%}
+.cform textarea{resize:vertical;min-height:120px}
+.cform input:focus,.cform select:focus,.cform textarea:focus{outline:none;border-color:var(--sun)}
+.cform :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.cform .btn{justify-self:start}
+.cform .btn:disabled{opacity:.6;cursor:wait}
+.cform .fine-print{font-size:13px;opacity:.7;margin:0;max-width:none}
+.cform .fine-print a{color:inherit}
+.cform .status{margin:0;font-size:15px;min-height:1.4em;opacity:1;max-width:none}
+.cform .status.ok{color:var(--sun)}
+.cform .status.err{color:#FFB4A8}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media (max-width:560px){.cform .row{grid-template-columns:1fr}}
 .channel{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
 .channel a{font-family:var(--mono);font-size:clamp(15px,2.2vw,19px);background:rgba(127,127,127,.2);padding:12px 16px;border-radius:0;text-decoration:none;word-break:break-all}
 .channel a:hover{background:rgba(127,127,127,.3)}

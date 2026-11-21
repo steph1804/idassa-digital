@@ -3,6 +3,9 @@
 // Lozinku možeš zamijeniti svojom u Cloudflareu: Settings → Variables and Secrets → SITE_PASSWORD (Secret).
 // Stranica je otključana preko "vars": { "SITE_PUBLIC": "true" } u wrangler.jsonc. Za ponovno zaključavanje makni taj redak.
 
+import { EmailMessage } from 'cloudflare:email';
+import { handleContact } from './contact.js';
+
 const REALM = 'idassa.digital';
 // Datoteke koje telefon treba za instalaciju stranice kao aplikacije (manifest i ikone).
 // Chrome i Googleov poslužitelj ih dohvaćaju bez lozinke, pa su izuzete od zaključavanja.
@@ -47,6 +50,7 @@ export default {
     if (new URL(request.url).pathname === '/sitemap.xml') {
       return Response.redirect(new URL('/sitemap-index.xml', request.url).toString(), 301);
     }
+    if (new URL(request.url).pathname === '/api/kontakt') return handleContact(request, env, EmailMessage);
     if (env.SITE_PUBLIC === 'true') return env.ASSETS.fetch(request);
 
     if (PUBLIC_PATHS.has(new URL(request.url).pathname)) return env.ASSETS.fetch(request);

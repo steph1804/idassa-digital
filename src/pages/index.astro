@@ -203,14 +203,50 @@ const jsonLd = {
 </section>
 
 <div class="contact" id="kontakt">
-  <div>
+  <div class="contact-intro">
     <h2>Razgovarajmo o vašoj <em>stranici.</em></h2>
     <p>Napišite nam ukratko čime se bavite i što vam treba. Javljamo se u roku od jednog radnog dana.</p>
+    <div class="channels">
+      <div class="channel"><span class="lbl">E-mail</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div class="channel"><span class="lbl">Telefon</span><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></div>
+    </div>
   </div>
-  <div class="channels">
-    <div class="channel"><span class="lbl">E-mail</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
-    <div class="channel"><span class="lbl">Telefon</span><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></div>
-  </div>
+  <form class="cform" method="post" action="/api/kontakt" data-contact-form novalidate>
+    <div class="field">
+      <label for="cf-ime">Ime i prezime</label>
+      <input id="cf-ime" name="ime" type="text" autocomplete="name" required maxlength="100" />
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="cf-email">E-mail</label>
+        <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="200" />
+      </div>
+      <div class="field">
+        <label for="cf-tel">Telefon <span>(nije obavezno)</span></label>
+        <input id="cf-tel" name="telefon" type="tel" autocomplete="tel" maxlength="40" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="cf-paket">Paket</label>
+      <select id="cf-paket" name="paket">
+        <option value="Nisam siguran">Nisam siguran, savjetujte me</option>
+        <option value="Portus">Portus (390 €)</option>
+        <option value="Forum">Forum (790 €)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="cf-poruka">Poruka</label>
+      <textarea id="cf-poruka" name="poruka" rows="5" required maxlength="5000" placeholder="Npr. apartman u Zadru, trebam stranicu na 3 jezika s galerijom."></textarea>
+    </div>
+    <div class="hp" aria-hidden="true">
+      <label for="cf-web">Web stranica</label>
+      <input id="cf-web" name="web" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+    <input type="hidden" name="t" value="" data-started />
+    <p class="fine-print">Slanjem pristajete da vaše podatke koristimo samo za odgovor na upit. <a href="/politika-privatnosti">Politika privatnosti</a></p>
+    <button class="btn sun" type="submit">Pošalji upit</button>
+    <p class="status" role="status" aria-live="polite" data-status></p>
+  </form>
 </div>
 <script>
   const root = document.querySelector('[data-parallax-root]');
@@ -244,6 +280,49 @@ const jsonLd = {
       imgs[i].classList.add('on');
       if (url) url.textContent = imgs[i].dataset.domain || '';
     }, 4000);
+  }
+
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  if (form) {
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    const started = form.querySelector<HTMLInputElement>('[data-started]');
+    if (started) started.value = String(Date.now());
+    const show = (msg: string, ok: boolean) => {
+      status.textContent = msg;
+      status.className = 'status ' + (ok ? 'ok' : 'err');
+    };
+    const q = new URLSearchParams(location.search);
+    if (q.get('poslano')) show('Hvala! Poruka je poslana, javljamo se u roku od jednog radnog dana.', true);
+    if (q.get('greska')) show('Poruka nije poslana. Provjerite polja ili nam pišite na hello@idassa.digital.', false);
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+      btn.disabled = true;
+      show('Šaljem…', true);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const data = await res.json().catch(() => ({ ok: false, message: '' }));
+        if (res.ok && data.ok) {
+          form.reset();
+          if (started) started.value = String(Date.now());
+          show(data.message || 'Hvala! Poruka je poslana.', true);
+        } else {
+          show(data.message || 'Poruka nije poslana. Pišite nam na hello@idassa.digital.', false);
+        }
+      } catch {
+        show('Nema veze s poslužiteljem. Pokušajte ponovno ili nam pišite na hello@idassa.digital.', false);
+      } finally {
+        btn.disabled = false;
+      }
+    });
   }
 </script>
 </Base>
