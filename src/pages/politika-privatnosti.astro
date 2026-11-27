@@ -7,7 +7,7 @@ import { site } from '../data/site';
 <p class="updated">Vrijedi od: 27. studenoga 2026.</p>
 
 <h2>Tko smo</h2>
-<p>Voditelj obrade osobnih podataka je {site.owner || '[IME PREZIME]'}, {site.city} ({site.tradeName}). Za sva pitanja o privatnosti pišite na {site.email}.</p>
+<p>Voditelj obrade osobnih podataka je {site.owner ? `${site.owner}, ${site.city} (${site.tradeName})` : site.name}. Za sva pitanja o privatnosti pišite na {site.email}.</p>
 
 <h2>Koje podatke prikupljamo</h2>
 {site.gaId
