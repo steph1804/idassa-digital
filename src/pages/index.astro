@@ -346,6 +346,7 @@ const jsonLd = {
         const data = await res.json().catch(() => ({ ok: false, message: '' }));
         if (res.ok && data.ok) {
           form.reset();
+          (window as any).gtag?.('event', 'generate_lead', { form: 'kontakt' });
           if (started) started.value = String(Date.now());
           show(data.message || 'Hvala! Poruka je poslana.', true);
         } else {

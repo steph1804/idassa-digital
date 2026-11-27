@@ -9,6 +9,8 @@ export const site = {
   phone: '+385976070998',
   phoneDisplay: '+385 97 607 0998',
   year: 2026,
+  // Google tag (Analytics): ID iz Google Analyticsa, G-XXXXXXXXXX ili GTM-XXXXXXX. Prazno = bez analitike i bez trake za kolačiće.
+  gaId: 'GTM-T3ZGRZ6D',
   // Fotografija u parallax zaglavlju (datoteka u public/), npr. '/hero/zadar.webp'. Prazno = bez fotografije.
   heroImage: '/hero/zadar-2000.webp',
   heroImageSmall: '/hero/zadar-1000.webp',

@@ -93,9 +93,71 @@ const ogImage = new URL(ogImagePath, Astro.site);
       <div class="links">
         <a href="/blog/">Blog</a>
         <a href="/politika-privatnosti/">Politika privatnosti</a>
+        {site.gaId && <a href="/politika-privatnosti/#kolacici" data-cookie-settings>Postavke kolačića</a>}
         <a href={`mailto:${site.email}`}>{site.email}</a>
       </div>
     </footer>
   </div>
+  {site.gaId && (
+    <>
+      <div class="cookies" id="kolacici-traka" role="dialog" aria-label="Kolačići" hidden>
+        <p>Koristimo Google Analytics da vidimo koliko ljudi posjećuje stranicu i što ih zanima. Kolačiće postavljamo samo ako pristanete. <a href="/politika-privatnosti/#kolacici">Više o tome</a></p>
+        <div class="cookies-btns">
+          <button class="btn ghost" type="button" data-consent="ne">Odbijam</button>
+          <button class="btn" type="button" data-consent="da">Prihvaćam</button>
+        </div>
+      </div>
+      <script is:inline define:vars={{ gaId: site.gaId }}>
+        (function () {
+          var KEY = 'idassa-kolacici';
+          function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+          function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+          function load() {
+            if (window.__gaLoaded) return;
+            window.__gaLoaded = true;
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () { window.dataLayer.push(arguments); };
+            window.gtag('js', new Date());
+            var gtm = gaId.indexOf('GTM-') === 0;
+            if (!gtm) window.gtag('config', gaId);
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/' + (gtm ? 'gtm.js' : 'gtag/js') + '?id=' + gaId;
+            document.head.appendChild(s);
+          }
+          function clear() {
+            document.cookie.split(';').forEach(function (c) {
+              var n = c.split('=')[0].trim();
+              if (n.indexOf('_ga') === 0 || n === '_gid') {
+                ['', '; domain=.' + location.hostname, '; domain=' + location.hostname].forEach(function (d) {
+                  document.cookie = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + d;
+                });
+              }
+            });
+          }
+          function init() {
+            var bar = document.getElementById('kolacici-traka');
+            var choice = get();
+            if (choice === 'da') load();
+            else if (!choice) bar.hidden = false;
+            bar.addEventListener('click', function (e) {
+              var v = e.target.getAttribute && e.target.getAttribute('data-consent');
+              if (!v) return;
+              set(v);
+              bar.hidden = true;
+              if (v === 'da') load();
+              else if (window.__gaLoaded) { clear(); location.reload(); }
+              else clear();
+            });
+            document.querySelectorAll('[data-cookie-settings]').forEach(function (a) {
+              a.addEventListener('click', function (e) { e.preventDefault(); bar.hidden = false; });
+            });
+          }
+          if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+          else init();
+        })();
+      </script>
+    </>
+  )}
 </body>
 </html>
