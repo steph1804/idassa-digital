@@ -4,23 +4,61 @@ import { site } from '../data/site';
 import { portfolio } from '../data/portfolio';
 const shots = portfolio.filter((w) => w.image);
 
+const faq = [
+  { q: 'Koliko traje izrada stranice?', a: 'Jednostavna stranica gotova je za oko dva tjedna od prvog razgovora. Veće stranice s više podstranica traju tri do četiri tjedna, ovisno o sadržaju.' },
+  { q: 'Koliko košta web stranica?', a: 'Paket Portus (stranica na jednoj stranici, 3 jezika, registracija domene) košta 390 €, a paket Forum (do 6 podstranica, tekstovi, osnovni SEO i Google profil, 7 jezika) 790 €. Cijene su konačne i jednokratne. Održavanje i hosting su od 25 € mjesečno.' },
+  { q: 'Trebam li sam pripremiti tekstove i slike?', a: 'Ne morate. U paketu Forum pišemo tekstove umjesto vas, a možemo preporučiti i fotografa. Ako već imate materijale, rado ćemo ih iskoristiti.' },
+  { q: 'Što je AI optimizacija?', a: 'Sve više ljudi umjesto klasične pretrage pita ChatGPT, Googleove AI preglede ili druge asistente gdje jesti, spavati ili koga zvati. AI optimizacijom slažemo stranicu, strukturirane podatke i Google poslovni profil tako da ti alati jasno razumiju tko ste, gdje ste i što nudite, pa vas lakše preporuče.' },
+  { q: 'Pomažete li da me klijenti pronađu na Googleu?', a: 'Da. Svaku stranicu radimo s osnovnim SEO-om, a sređujemo i Google poslovni profil: kategorije, radno vrijeme, fotografije, recenzije i objave, da se pojavite na Google Mapsu kad vas netko traži.' },
+  { q: 'Čija je domena i stranica nakon izrade?', a: 'Vaša. Domena se registrira na vaše ime, a stranicu možete preseliti kod bilo kojeg drugog pružatelja usluga.' },
+  { q: 'Mogu li sam mijenjati sadržaj?', a: 'Da. Ako želite sami mijenjati tekstove, cijene ili novosti, postavit ćemo jednostavan sustav i pokazati vam kako ga koristiti. Ako ne želite, izmjene radimo mi.' },
+  { q: 'Radite li i za klijente izvan Zadra?', a: 'Da. Sastanke možemo održati i online, a stranice radimo za klijente iz cijele Hrvatske.' },
+];
+
+const home = 'https://idassa.digital/';
+const offer = (name: string, price: number, description: string) => ({
+  '@type': 'Offer', name, price, priceCurrency: 'EUR', description, url: `${home}#paketi`,
+});
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: site.name,
-  description: 'Izrada web stranica za smještajne objekte, obrte i male tvrtke.',
-  url: 'https://idassa.digital/',
-  email: site.email,
-  telephone: site.phone,
-  areaServed: 'HR',
-  address: { '@type': 'PostalAddress', postalCode: '23000', addressLocality: 'Zadar', addressCountry: 'HR' },
-  priceRange: '€€',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${home}#studio`,
+      name: site.name,
+      alternateName: site.tradeName,
+      description: 'Izrada web stranica, Google (SEO) optimizacija, AI optimizacija i digitalni marketing za smještajne objekte, obrte i male tvrtke u cijeloj Hrvatskoj.',
+      url: home,
+      logo: `${home}assets/icon-512.png`,
+      image: `${home}assets/og-image.png`,
+      email: site.email,
+      telephone: site.phone,
+      address: { '@type': 'PostalAddress', postalCode: '23000', addressLocality: 'Zadar', addressCountry: 'HR' },
+      areaServed: { '@type': 'Country', name: 'Hrvatska' },
+      availableLanguage: ['hr', 'en'],
+      priceRange: '390 € – 790 €',
+      knowsAbout: ['izrada web stranica', 'web dizajn', 'SEO', 'Google poslovni profil', 'AI optimizacija', 'digitalni marketing', 'web stranice za apartmane'],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Paketi izrade web stranica',
+        itemListElement: [
+          offer('Portus', 390, 'Stranica na jednoj stranici, prilagođena mobitelu, registracija domene, prijevod na 3 jezika, galerija do 12 fotografija.'),
+          offer('Forum', 790, 'Do 6 podstranica, pisanje tekstova, osnovni SEO i Google profil, obrazac za upite, prijevod na 7 jezika, galerija do 24 fotografije.'),
+        ],
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${home}#pitanja`,
+      mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+  ],
 };
 ---
 <Base
   home
-  title="idassa.digital | Izrada web stranica"
-  description="Izrada brzih i preglednih web stranica za smještajne objekte, obrte i male tvrtke. Web studio iz Zadra, jasne cijene, gotovo za dva tjedna."
+  title="Izrada web stranica, SEO i AI optimizacija | idassa.digital"
+  description="Izrađujemo brze web stranice za apartmane, obrte i male tvrtke diljem Hrvatske, uz Google (SEO) i AI optimizaciju. Jasne cijene od 390 €, gotovo za dva tjedna."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -73,12 +111,22 @@ const jsonLd = {
     <article>
       <h3>Web stranice</h3>
       <p>Pregledna stranica koja ulijeva povjerenje, dobro izgleda na mobitelu i učitava se u sekundi.</p>
-      <ul><li>Dizajn</li><li>Izrada</li><li>Tekstovi</li></ul>
+      <ul><li>Dizajn</li><li>Izrada</li><li>Tekstovi</li><li>Više jezika</li></ul>
     </article>
     <article>
-      <h3>Održavanje i Google</h3>
-      <p>Brinemo da stranica radi, da je sigurna i da vas klijenti pronađu na Googleu i Google Mapsu.</p>
-      <ul><li>Hosting</li><li>SEO</li><li>Google profil</li></ul>
+      <h3>Google i SEO</h3>
+      <p>Da vas klijenti pronađu na Googleu i Google Mapsu: optimizirana stranica i sređen Google poslovni profil s recenzijama i fotografijama.</p>
+      <ul><li>SEO</li><li>Google profil</li><li>Google Maps</li></ul>
+    </article>
+    <article>
+      <h3>AI optimizacija</h3>
+      <p>Sve više ljudi pita ChatGPT i Googleove AI preglede koga zvati. Slažemo stranicu i podatke tako da vas AI alati razumiju i preporuče.</p>
+      <ul><li>ChatGPT</li><li>AI pregledi</li><li>Strukturirani podaci</li></ul>
+    </article>
+    <article>
+      <h3>Održavanje i marketing</h3>
+      <p>Brinemo da stranica radi i da je sigurna, a pomažemo i s objavama, društvenim mrežama i oglasima.</p>
+      <ul><li>Hosting</li><li>Održavanje</li><li>Društvene mreže</li></ul>
     </article>
   </div>
 </section>
@@ -179,26 +227,12 @@ const jsonLd = {
 <section id="pitanja" aria-labelledby="pitanja-naslov">
   <div class="sec-head"><h2 id="pitanja-naslov">Česta pitanja</h2></div>
   <div class="faq">
-    <details>
-      <summary>Koliko traje izrada stranice?</summary>
-      <p>Jednostavna stranica gotova je za oko dva tjedna od prvog razgovora. Veće stranice s više podstranica traju tri do četiri tjedna, ovisno o sadržaju.</p>
-    </details>
-    <details>
-      <summary>Trebam li sam pripremiti tekstove i slike?</summary>
-      <p>Ne morate. U paketu Forum pišemo tekstove umjesto vas, a možemo preporučiti i fotografa. Ako već imate materijale, rado ćemo ih iskoristiti.</p>
-    </details>
-    <details>
-      <summary>Čija je domena i stranica nakon izrade?</summary>
-      <p>Vaša. Domena se registrira na vaše ime, a stranicu možete preseliti kod bilo kojeg drugog pružatelja usluga.</p>
-    </details>
-    <details>
-      <summary>Mogu li sam mijenjati sadržaj?</summary>
-      <p>Da. Ako želite sami mijenjati tekstove, cijene ili novosti, postavit ćemo jednostavan sustav i pokazati vam kako ga koristiti. Ako ne želite, izmjene radimo mi.</p>
-    </details>
-    <details>
-      <summary>Radite li i za klijente izvan Zadra?</summary>
-      <p>Da. Sastanke možemo održati i online, a stranice radimo za klijente iz cijele Hrvatske.</p>
-    </details>
+    {faq.map((f) => (
+      <details>
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
   </div>
 </section>
 
