@@ -12,21 +12,34 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const url = new URL(`/blog/${post.id}/`, Astro.site).href;
+const studio = { '@type': 'Organization', '@id': 'https://idassa.digital/#studio', name: site.name, url: 'https://idassa.digital/', logo: { '@type': 'ImageObject', url: 'https://idassa.digital/assets/icon-512.png' } };
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: post.data.title,
-  description: post.data.description,
-  datePublished: post.data.date.toISOString(),
-  dateModified: (post.data.updated ?? post.data.date).toISOString(),
-  inLanguage: 'hr',
-  mainEntityOfPage: url,
-  ...(post.data.image && { image: new URL(post.data.imageOg ?? post.data.image, Astro.site).href }),
-  author: { '@type': 'Organization', name: site.name, url: 'https://idassa.digital/' },
-  publisher: { '@type': 'Organization', name: site.name, url: 'https://idassa.digital/' },
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: post.data.date.toISOString(),
+      dateModified: (post.data.updated ?? post.data.date).toISOString(),
+      inLanguage: 'hr',
+      mainEntityOfPage: url,
+      ...(post.data.image && { image: new URL(post.data.imageOg ?? post.data.image, Astro.site).href }),
+      author: studio,
+      publisher: studio,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Početna', item: 'https://idassa.digital/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://idassa.digital/blog/' },
+        { '@type': 'ListItem', position: 3, name: post.data.title, item: url },
+      ],
+    },
+  ],
 };
 ---
-<Base title={`${post.data.title} | idassa.digital`} description={post.data.description} ogType="article" ogImage={post.data.imageOg ?? post.data.image}>
+<Base title={`${post.data.title} | idassa.digital`} description={post.data.description} ogType="article" ogImage={post.data.imageOg ?? post.data.image} ogImageAlt={post.data.imageAlt || post.data.title} published={post.data.date} modified={post.data.updated ?? post.data.date}>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <article class="post">
     <p class="post-back"><a href="/blog/">← Svi članci</a></p>
