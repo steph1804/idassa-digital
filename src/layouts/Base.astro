@@ -16,6 +16,17 @@ interface Props {
 }
 const { title, description, noindex = false, home = false, ogType = 'website', ogImage: ogImagePath = '/assets/og-image.png', ogImageAlt = 'idassa.digital, izrada web stranica, SEO i AI optimizacija', published, modified } = Astro.props;
 const inBlog = Astro.url.pathname.startsWith('/blog');
+const pre = home ? '' : '/';
+const menuItems = [
+  { label: 'Usluge', href: `${pre}#usluge` },
+  { label: 'Radovi', href: `${pre}#radovi` },
+  { label: 'Kako radimo', href: `${pre}#proces` },
+  { label: 'Paketi i cijene', href: `${pre}#paketi` },
+  { label: 'Zašto mi', href: `${pre}#zasto` },
+  { label: 'Česta pitanja', href: `${pre}#pitanja` },
+  { label: 'Blog', href: '/blog/', current: inBlog },
+  { label: 'Kontakt', href: `${pre}#kontakt` },
+];
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(ogImagePath, Astro.site);
 ---
@@ -75,6 +86,19 @@ const ogImage = new URL(ogImagePath, Astro.site);
           </>
         )}
       </nav>
+      <div class="menu">
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Otvori izbornik">
+          <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+        <div class="menu-panel" id="menu-panel" hidden>
+          <p class="menu-title">Rubrike</p>
+          <ul>
+            {menuItems.map((m) => (
+              <li><a href={m.href} aria-current={m.current ? 'page' : undefined}>{m.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </header>
 
     <main id="sadrzaj" class={home ? undefined : 'doc'}>
@@ -159,5 +183,21 @@ const ogImage = new URL(ogImagePath, Astro.site);
       </script>
     </>
   )}
+<script is:inline>
+  (() => {
+    const btn = document.querySelector('.menu-btn');
+    const panel = document.getElementById('menu-panel');
+    if (!btn || !panel) return;
+    const set = (open) => {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Zatvori izbornik' : 'Otvori izbornik');
+      panel.hidden = !open;
+    };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); set(panel.hidden); });
+    panel.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+    document.addEventListener('click', (e) => { if (!panel.hidden && !e.target.closest('.menu')) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { set(false); btn.focus(); } });
+  })();
+</script>
 </body>
 </html>
