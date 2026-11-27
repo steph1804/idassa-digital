@@ -21,11 +21,12 @@ const jsonLd = {
   dateModified: (post.data.updated ?? post.data.date).toISOString(),
   inLanguage: 'hr',
   mainEntityOfPage: url,
+  ...(post.data.image && { image: new URL(post.data.imageOg ?? post.data.image, Astro.site).href }),
   author: { '@type': 'Organization', name: site.name, url: 'https://idassa.digital/' },
   publisher: { '@type': 'Organization', name: site.name, url: 'https://idassa.digital/' },
 };
 ---
-<Base title={`${post.data.title} | idassa.digital`} description={post.data.description} ogType="article">
+<Base title={`${post.data.title} | idassa.digital`} description={post.data.description} ogType="article" ogImage={post.data.imageOg ?? post.data.image}>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <article class="post">
     <p class="post-back"><a href="/blog/">← Svi članci</a></p>
@@ -34,6 +35,14 @@ const jsonLd = {
       <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time> · {readingTime(post.body)} min čitanja
       {post.data.updated && <> · ažurirano {formatDate(post.data.updated)}</>}
     </p>
+    {post.data.image && (
+      <figure class="post-cover">
+        <img src={post.data.image} srcset={post.data.imageSmall ? `${post.data.imageSmall} 800w, ${post.data.image} 1600w` : undefined} sizes="(max-width: 760px) 100vw, 720px" alt={post.data.imageAlt} width="1600" height="1067" fetchpriority="high" />
+        {post.data.imageCredit && (
+          <figcaption>Foto: {post.data.imageCreditUrl ? <a href={post.data.imageCreditUrl} target="_blank" rel="noopener">{post.data.imageCredit}</a> : post.data.imageCredit}</figcaption>
+        )}
+      </figure>
+    )}
     <div class="prose">
       <Content />
     </div>

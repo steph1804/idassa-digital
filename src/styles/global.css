@@ -277,6 +277,14 @@ nav a[aria-current="page"]{color:var(--ink)}
 .post-card h2{font-size:clamp(24px,3.2vw,32px);max-width:28ch;margin:4px 0 0}
 .post-card p{color:var(--muted);max-width:62ch}
 .post-card:hover h2{color:var(--sea)}
+.post-card.has-img{grid-template-columns:280px 1fr;gap:28px;align-items:center}
+.post-text{display:grid;gap:8px}
+.post-thumb{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+@media (max-width:640px){.post-card.has-img{grid-template-columns:1fr;gap:16px}}
+.post-cover{margin:32px 0 0}
+.post-cover img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.post-cover figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.post-cover figcaption a{color:inherit}
 .post-more{font-weight:600;color:var(--sea)}
 .post-meta{font-family:var(--mono);font-size:13px;color:var(--muted)}
 .post{max-width:720px;padding-block:24px 72px}
