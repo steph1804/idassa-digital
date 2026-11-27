@@ -37,9 +37,13 @@ const jsonLd = {
     </p>
     {post.data.image && (
       <figure class="post-cover">
-        <img src={post.data.image} srcset={post.data.imageSmall ? `${post.data.imageSmall} 800w, ${post.data.image} 1600w` : undefined} sizes="(max-width: 760px) 100vw, 720px" alt={post.data.imageAlt} width="1600" height="1067" fetchpriority="high" />
-        {post.data.imageCredit && (
-          <figcaption>Foto: {post.data.imageCreditUrl ? <a href={post.data.imageCreditUrl} target="_blank" rel="noopener">{post.data.imageCredit}</a> : post.data.imageCredit}</figcaption>
+        <a href={post.data.image}><img src={post.data.image} srcset={post.data.imageSmall ? `${post.data.imageSmall} 800w, ${post.data.image} 1600w` : undefined} sizes="(max-width: 760px) 100vw, 720px" alt={post.data.imageAlt} fetchpriority="high" /></a>
+        {(post.data.imageCaption || post.data.imageCredit) && (
+          <figcaption>
+            {post.data.imageCaption}
+            {post.data.imageCaption && post.data.imageCredit && ' '}
+            {post.data.imageCredit && <>Foto: {post.data.imageCreditUrl ? <a href={post.data.imageCreditUrl} target="_blank" rel="noopener">{post.data.imageCredit}</a> : post.data.imageCredit}</>}
+          </figcaption>
         )}
       </figure>
     )}
