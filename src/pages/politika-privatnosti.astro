@@ -4,13 +4,15 @@ import { site } from '../data/site';
 ---
 <Base title="Politika privatnosti | idassa.digital" description="Kako idassa.digital prikuplja i obrađuje osobne podatke.">
 <h1>Politika privatnosti</h1>
-<p class="updated">Vrijedi od: [DATUM OBJAVE]</p>
+<p class="updated">Vrijedi od: 27. studenoga 2026.</p>
 
 <h2>Tko smo</h2>
 <p>Voditelj obrade osobnih podataka je {site.owner || '[IME PREZIME]'}, {site.city} ({site.tradeName}). Za sva pitanja o privatnosti pišite na {site.email}.</p>
 
 <h2>Koje podatke prikupljamo</h2>
-<p>Ova stranica ne koristi kolačiće za praćenje, oglašavanje ni analitiku, i ne prikuplja podatke o vašem posjetu. Fontovi i sve datoteke učitavaju se s našeg poslužitelja, a ne s vanjskih servisa.</p>
+{site.gaId
+  ? <p>Ako to dopustite, koristimo Google Analytics za statistiku posjeta (više u odjeljku <a href="#kolacici">Kolačići i analitika</a>). Bez vašeg pristanka stranica ne postavlja kolačiće za praćenje ni oglašavanje. Fontovi i ostale datoteke učitavaju se s našeg poslužitelja.</p>
+  : <p>Ova stranica ne koristi kolačiće za praćenje, oglašavanje ni analitiku, i ne prikuplja podatke o vašem posjetu. Fontovi i sve datoteke učitavaju se s našeg poslužitelja, a ne s vanjskih servisa.</p>}
 <p>Podatke prikupljamo samo kada nam se sami javite, putem kontakt forme, e-mailom ili telefonom. Tada obrađujemo vaše ime, kontakt podatke (e-mail i, ako ga upišete, telefon) i sadržaj upita. Upit iz kontakt forme prosljeđuje se na našu e-poštu putem usluge Cloudflare (Email Routing) i ne sprema se u bazu podataka.</p>
 
 <h2>Zašto ih koristimo</h2>
@@ -26,6 +28,14 @@ import { site } from '../data/site';
 
 <h2>S kim ih dijelimo</h2>
 <p>Vaše podatke ne prodajemo i ne dajemo trećima u marketinške svrhe. Mogu ih vidjeti samo pružatelji usluga koje koristimo za poslovanje (npr. pružatelj e-pošte i knjigovodstvo), i to samo u mjeri potrebnoj za njihov posao.</p>
+
+{site.gaId && (
+  <>
+    <h2 id="kolacici">Kolačići i analitika</h2>
+    <p>Uz vaš pristanak koristimo Google Analytics 4 (Google Ireland Limited) da vidimo koliko ljudi posjećuje stranicu, s kojih stranica dolaze i koje nas sadržaje čitaju. Google pritom postavlja kolačiće <code>_ga</code> i <code>_ga_*</code> koji traju do 2 godine i obrađuje podatke poput skraćene IP adrese, vrste uređaja i preglednika te posjećenih stranica. Podaci mogu biti preneseni u SAD, na temelju Okvira za privatnost podataka EU-a i SAD-a. Ne koristimo ih za oglašavanje i ne povezujemo ih s vašim imenom.</p>
+    <p>Pravna osnova je vaša privola (članak 6. stavak 1. točka a) Opće uredbe o zaštiti podataka). Bez pristanka se Google Analytics ne učitava. Privolu možete povući u svakom trenutku putem poveznice „Postavke kolačića” u podnožju stranice. Vaš izbor pamtimo u pregledniku (localStorage), bez kolačića.</p>
+  </>
+)}
 
 <h2>Vaša prava</h2>
 <p>Imate pravo zatražiti uvid u svoje podatke, njihov ispravak ili brisanje, ograničenje obrade te prenosivost podataka. Zahtjev pošaljite na {site.email}. Ako smatrate da su vaša prava povrijeđena, možete podnijeti prigovor Agenciji za zaštitu osobnih podataka (azop.hr).</p>

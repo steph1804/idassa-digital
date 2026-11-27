@@ -324,3 +324,12 @@ nav a[aria-current="page"]{color:var(--ink)}
 .post-cta p{color:var(--muted)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* traka za kolačiće (samo kad je uključen Google Analytics) */
+.cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:640px;margin-inline:auto;background:var(--surface);border:1.5px solid var(--ink);padding:16px 18px;display:flex;gap:16px;align-items:center;font-size:14px;color:var(--ink)}
+.cookies[hidden]{display:none}
+.cookies p{margin:0;flex:1}
+.cookies a{color:var(--sea)}
+.cookies-btns{display:flex;gap:8px;flex-shrink:0}
+.cookies .btn{padding:9px 16px}
+@media (max-width:560px){.cookies{flex-direction:column;align-items:stretch}.cookies-btns .btn{flex:1;justify-content:center}}
