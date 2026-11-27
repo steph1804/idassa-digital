@@ -118,10 +118,11 @@ const ogImage = new URL(ogImagePath, Astro.site);
             window.dataLayer = window.dataLayer || [];
             window.gtag = function () { window.dataLayer.push(arguments); };
             window.gtag('js', new Date());
-            window.gtag('config', gaId);
+            var gtm = gaId.indexOf('GTM-') === 0;
+            if (!gtm) window.gtag('config', gaId);
             var s = document.createElement('script');
             s.async = true;
-            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+            s.src = 'https://www.googletagmanager.com/' + (gtm ? 'gtm.js' : 'gtag/js') + '?id=' + gaId;
             document.head.appendChild(s);
           }
           function clear() {
