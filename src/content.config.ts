@@ -13,6 +13,13 @@ const blog = defineCollection({
     updated: z.coerce.date().optional(),
     // true = članak se ne prikazuje na stranici (skica)
     draft: z.boolean().default(false),
+    // Naslovna fotografija (datoteke u public/blog/). Sve je neobavezno.
+    image: z.string().optional(), // velika, npr. /blog/slika-1600.webp
+    imageSmall: z.string().optional(), // mala, npr. /blog/slika-800.webp
+    imageOg: z.string().optional(), // za dijeljenje, 1200x630 jpg
+    imageAlt: z.string().default(''),
+    imageCredit: z.string().optional(), // npr. 'Adrian Mag, Unsplash'
+    imageCreditUrl: z.string().url().optional(),
   }),
 });
 

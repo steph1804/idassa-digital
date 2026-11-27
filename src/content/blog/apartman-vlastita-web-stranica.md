@@ -2,6 +2,12 @@
 title: Treba li apartmanu vlastita web stranica ako je već na Bookingu?
 description: Booking i Airbnb donose goste, ali uzimaju proviziju i drže kontakt s gostom. Evo kada se vlastita stranica isplati i što na njoj mora biti.
 date: 2026-11-27
+image: /blog/sudurad-1600.webp
+imageSmall: /blog/sudurad-800.webp
+imageOg: /blog/sudurad-og.jpg
+imageAlt: Kamene kuće s crvenim krovovima uz malu luku s brodicama u Suđurđu na Šipanu
+imageCredit: Adrian Mag, Unsplash
+imageCreditUrl: https://unsplash.com/photos/a-stone-building-with-a-red-tiled-roof-NOUa5Mqo1Fw
 ---
 
 Većina iznajmljivača na obali počne s Bookingom ili Airbnbom, i to je razumno: platforme donose goste od prvog dana. No nakon jedne ili dvije sezone mnogi se zapitaju plaćaju li previše i bi li im vlastita web stranica pomogla. Kratki odgovor: stranica ne zamjenjuje platforme, ali vam vraća dio kontrole i novca.
