@@ -24,6 +24,11 @@ Većina iznajmljivača na obali počne s Bookingom ili Airbnbom, i to je razumno
 
 ## Što stranica apartmana mora imati
 
+<figure class="wide">
+  <a href="/blog/apartman-web-ilustracija-1600.webp"><img src="/blog/apartman-web-ilustracija-1600.webp" srcset="/blog/apartman-web-ilustracija-800.webp 800w, /blog/apartman-web-ilustracija-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 720px" width="1600" height="1000" loading="lazy" alt="Primjer web stranice apartmana na računalu i mobitelu: fotografije, cijene po sezoni, karta, obrazac za upit, izbor jezika i mobilna verzija"></a>
+  <figcaption>Primjer stranice izmišljenog apartmana. Brojevi odgovaraju popisu ispod.</figcaption>
+</figure>
+
 1. **Dobre fotografije** svake prostorije, terase i pogleda, snimljene po danu.
 2. **Jasne cijene po sezoni** ili barem raspon cijena, da gost odmah zna je li to za njega.
 3. **Lokaciju na karti** i udaljenost do plaže, centra i trgovine.
