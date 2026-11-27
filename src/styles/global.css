@@ -346,7 +346,6 @@ nav a[aria-current="page"]{color:var(--ink)}
 .menu-btn[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .menu-panel{position:absolute;right:0;top:calc(100% + 10px);z-index:50;width:min(280px,calc(100vw - 32px));background:var(--surface);border:1px solid var(--line);box-shadow:0 18px 40px -12px color-mix(in srgb,var(--ink) 35%,transparent);padding:10px;animation:menu-in .18s ease-out}
 .menu-panel[hidden]{display:none}
-.menu-title{margin:4px 10px 6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .menu-panel ul{list-style:none;margin:0;padding:0}
 .menu-panel a{display:block;padding:11px 10px;font-weight:600;color:var(--ink);text-decoration:none;border-top:1px solid var(--line)}
 .menu-panel li:first-child a{border-top:0}

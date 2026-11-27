@@ -91,7 +91,6 @@ const ogImage = new URL(ogImagePath, Astro.site);
           <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
         </button>
         <div class="menu-panel" id="menu-panel" hidden>
-          <p class="menu-title">Rubrike</p>
           <ul>
             {menuItems.map((m) => (
               <li><a href={m.href} aria-current={m.current ? 'page' : undefined}>{m.label}</a></li>
