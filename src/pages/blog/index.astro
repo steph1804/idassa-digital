@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate, readingTime } from '../../data/blog';
+const posts = await getPosts();
+---
+<Base title="Blog | idassa.digital" description="Savjeti o web stranicama za smještajne objekte, obrte i male tvrtke: što stranica treba imati, koliko košta i kako je naći na Googleu.">
+  <link slot="head" rel="alternate" type="application/rss+xml" title="idassa.digital blog" href="/blog/rss.xml" />
+  <div class="blog-head">
+    <p class="eyebrow">Blog</p>
+    <h1>Savjeti za vašu web stranicu</h1>
+    <p class="lead">Kratko i bez žargona: što stranica treba imati, kako je pronaći na Googleu i kako da vam donosi upite.</p>
+  </div>
+
+  {posts.length === 0 ? (
+    <p class="blog-empty">Prvi članci stižu uskoro.</p>
+  ) : (
+    <ol class="posts">
+      {posts.map((p) => (
+        <li>
+          <a class="post-card" href={`/blog/${p.id}/`}>
+            <p class="post-meta"><time datetime={p.data.date.toISOString()}>{formatDate(p.data.date)}</time> · {readingTime(p.body)} min čitanja</p>
+            <h2>{p.data.title}</h2>
+            <p>{p.data.description}</p>
+            <span class="post-more">Pročitaj članak →</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  )}
+</Base>
