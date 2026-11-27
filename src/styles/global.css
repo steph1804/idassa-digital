@@ -303,6 +303,9 @@ nav a[aria-current="page"]{color:var(--ink)}
 .prose a{color:var(--sea);font-weight:600}
 .prose blockquote{margin:24px 0;padding:4px 0 4px 20px;border-left:3px solid var(--sun);color:var(--ink)}
 .prose img{display:block;height:auto}
+.prose figure{margin:24px 0 28px}
+.prose figure img{width:100%;border:1px solid var(--line)}
+.prose figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 .post-cta{margin-top:56px;padding:28px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--sun);display:grid;gap:12px;justify-items:start}
 .post-cta h2{font-size:26px;margin:0}
 .post-cta p{color:var(--muted)}
