@@ -88,7 +88,7 @@
   --bg:#F8F3F0; --surface:#FFFFFF; --ink:#2B1B2E; --muted:#6E5E66; --line:#EADFDA;
   --sun:#F2A65A; --on-sun:#2B1B2E; --sea:#B4435A; --sea-soft:#F6E3E5;
   --display:"Archivo Black","Arial Black",system-ui,sans-serif; /* naslovi i podnaslovi */
-  --logo:"Outfit","Avenir Next",system-ui,sans-serif; /* logo */
+  --logo:"Archivo Black","Arial Black",system-ui,sans-serif; /* logo */
   --body:"Nunito Sans","Segoe UI",system-ui,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   --r:0;
