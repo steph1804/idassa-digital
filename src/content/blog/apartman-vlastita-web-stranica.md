@@ -2,12 +2,11 @@
 title: Treba li apartmanu vlastita web stranica ako je već na Bookingu?
 description: Booking i Airbnb donose goste, ali uzimaju proviziju i drže kontakt s gostom. Evo kada se vlastita stranica isplati i što na njoj mora biti.
 date: 2026-11-27
-image: /blog/sudurad-1600.webp
-imageSmall: /blog/sudurad-800.webp
-imageOg: /blog/sudurad-og.jpg
-imageAlt: Kamene kuće s crvenim krovovima uz malu luku s brodicama u Suđurđu na Šipanu
-imageCredit: Adrian Mag, Unsplash
-imageCreditUrl: https://unsplash.com/photos/a-stone-building-with-a-red-tiled-roof-NOUa5Mqo1Fw
+image: /blog/apartman-web-ilustracija-1600.webp
+imageSmall: /blog/apartman-web-ilustracija-800.webp
+imageOg: /blog/apartman-web-ilustracija-og.jpg
+imageAlt: Primjer web stranice apartmana na računalu i mobitelu, s fotografijama, cijenama po sezoni, kartom, obrascem za upit, izborom jezika i mobilnom verzijom
+imageCaption: Primjer stranice izmišljenog apartmana. Brojevi odgovaraju popisu "Što stranica apartmana mora imati".
 ---
 
 Većina iznajmljivača na obali počne s Bookingom ili Airbnbom, i to je razumno: platforme donose goste od prvog dana. No nakon jedne ili dvije sezone mnogi se zapitaju plaćaju li previše i bi li im vlastita web stranica pomogla. Kratki odgovor: stranica ne zamjenjuje platforme, ali vam vraća dio kontrole i novca.
@@ -23,11 +22,6 @@ Većina iznajmljivača na obali počne s Bookingom ili Airbnbom, i to je razumno
 **Mjesto za sve što ne stane u oglas.** Kako doći do vas, gdje parkirati, koje su plaže blizu, što se nalazi u kuhinji. Takva pitanja inače stižu porukama, jedno po jedno.
 
 ## Što stranica apartmana mora imati
-
-<figure class="wide">
-  <a href="/blog/apartman-web-ilustracija-1600.webp"><img src="/blog/apartman-web-ilustracija-1600.webp" srcset="/blog/apartman-web-ilustracija-800.webp 800w, /blog/apartman-web-ilustracija-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 720px" width="1600" height="1000" loading="lazy" alt="Primjer web stranice apartmana na računalu i mobitelu: fotografije, cijene po sezoni, karta, obrazac za upit, izbor jezika i mobilna verzija"></a>
-  <figcaption>Primjer stranice izmišljenog apartmana. Brojevi odgovaraju popisu ispod.</figcaption>
-</figure>
 
 1. **Dobre fotografije** svake prostorije, terase i pogleda, snimljene po danu.
 2. **Jasne cijene po sezoni** ili barem raspon cijena, da gost odmah zna je li to za njega.

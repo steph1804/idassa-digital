@@ -18,7 +18,7 @@ const posts = await getPosts();
       {posts.map((p) => (
         <li>
           <a class={p.data.image ? 'post-card has-img' : 'post-card'} href={`/blog/${p.id}/`}>
-            {p.data.image && <img class="post-thumb" src={p.data.imageSmall ?? p.data.image} alt="" width="800" height="533" loading="lazy" />}
+            {p.data.image && <img class="post-thumb" src={p.data.imageSmall ?? p.data.image} alt="" width="800" height="500" loading="lazy" />}
             <div class="post-text">
             <p class="post-meta"><time datetime={p.data.date.toISOString()}>{formatDate(p.data.date)}</time> · {readingTime(p.body)} min čitanja</p>
             <h2>{p.data.title}</h2>

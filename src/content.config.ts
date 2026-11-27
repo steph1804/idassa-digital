@@ -18,6 +18,7 @@ const blog = defineCollection({
     imageSmall: z.string().optional(), // mala, npr. /blog/slika-800.webp
     imageOg: z.string().optional(), // za dijeljenje, 1200x630 jpg
     imageAlt: z.string().default(''),
+    imageCaption: z.string().optional(), // tekst ispod slike
     imageCredit: z.string().optional(), // npr. 'Adrian Mag, Unsplash'
     imageCreditUrl: z.string().url().optional(),
   }),
